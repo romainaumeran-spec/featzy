@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<!--
+Projet prêt pour Vercel.
+Remplace les médias dans /assets :
+- logo.png
+- video_1.mp4
+- video_2.mp4
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Présentation contenus vidéo FEATZY</title>
+  <style>
+    :root {
+      --red: #9f1719;
+      --red-dark: #6f0e11;
+      --cream: #fff8e9;
+      --cream-2: #f4ead3;
+      --green: #c5ce6f;
+      --green-dark: #8f9b36;
+      --ink: #241515;
+      --muted: #7c6960;
+      --white: #ffffff;
+      --shadow: 0 24px 60px rgba(36, 21, 21, 0.15);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(197, 206, 111, 0.45), transparent 28%),
+        radial-gradient(circle at 85% 8%, rgba(159, 23, 25, 0.15), transparent 24%),
+        radial-gradient(circle at 68% 92%, rgba(197, 206, 111, 0.35), transparent 28%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "FEATZY";
+      position: fixed;
+      right: -80px;
+      bottom: -50px;
+      font-weight: 950;
+      font-size: clamp(80px, 16vw, 250px);
+      letter-spacing: -0.08em;
+      color: rgba(159, 23, 25, 0.045);
+      transform: rotate(-8deg);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 248, 233, 0.82);
+      border-bottom: 1px solid rgba(36, 21, 21, 0.08);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      color: var(--red);
+      font-size: 22px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      color: var(--cream);
+      box-shadow: 0 14px 30px rgba(159, 23, 25, 0.25);
+      font-size: 21px;
+      transform: rotate(-4deg);
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .links a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .links a:hover {
+      color: var(--red);
+      background: rgba(159, 23, 25, 0.08);
+    }
+
+    section {
+      padding: 86px 0;
+      scroll-margin-top: 92px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      padding-top: 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(159, 23, 25, 0.08);
+      color: var(--red);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    h1 {
+      font-size: clamp(54px, 8.4vw, 118px);
+      max-width: 920px;
+      color: var(--red);
+    }
+
+    h2 {
+      font-size: clamp(38px, 5.4vw, 72px);
+      color: var(--red-dark);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: clamp(25px, 3.2vw, 42px);
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      margin-top: 24px;
+      max-width: 720px;
+      font-size: clamp(18px, 2vw, 24px);
+      color: #4b3731;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 850;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--red);
+      color: var(--cream);
+      box-shadow: 0 16px 30px rgba(159, 23, 25, 0.22);
+    }
+
+    .button.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 36px rgba(159, 23, 25, 0.28);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(36, 21, 21, 0.14);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 560px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(145deg, rgba(159, 23, 25, 0.95), rgba(111, 14, 17, 0.98)),
+        radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.35), transparent 24%);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 34px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 28px),
+        radial-gradient(circle at 70% 20%, rgba(197, 206, 111, 0.65), transparent 22%);
+      opacity: 0.42;
+    }
+
+    .phone {
+      position: relative;
+      z-index: 1;
+      width: min(320px, 80%);
+      height: 620px;
+      margin: 0 auto;
+      border: 12px solid #1f1515;
+      border-radius: 44px;
+      background: var(--cream);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transform: rotate(4deg);
+    }
+
+    .phone-notch {
+      width: 120px;
+      height: 26px;
+      background: #1f1515;
+      border-radius: 0 0 18px 18px;
+      margin: 0 auto;
+    }
+
+    .phone-screen {
+      height: calc(100% - 26px);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+      gap: 16px;
+    }
+
+    .app-title {
+      font-weight: 950;
+      color: var(--red);
+      font-size: 30px;
+      letter-spacing: -0.06em;
+    }
+
+    .mini-card {
+      border-radius: 22px;
+      padding: 16px;
+      background: var(--white);
+      box-shadow: 0 14px 30px rgba(36, 21, 21, 0.12);
+    }
+
+    .mini-card.red {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 7px;
+    }
+
+    .mini-card.red .mini-label {
+      color: rgba(255, 248, 233, 0.75);
+    }
+
+    .mini-line {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(36, 21, 21, 0.12);
+      margin-top: 10px;
+    }
+
+    .mini-line:nth-child(3) {
+      width: 68%;
+    }
+
+    .mini-line:nth-child(4) {
+      width: 45%;
+    }
+
+    .section-kicker {
+      max-width: 780px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(36, 21, 21, 0.08);
+      box-shadow: 0 16px 40px rgba(36, 21, 21, 0.08);
+      padding: 26px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card strong {
+      color: var(--red-dark);
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--red);
+      color: var(--cream);
+      font-weight: 950;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 24px rgba(159, 23, 25, 0.18);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(197, 206, 111, 0.35);
+      color: #555d21;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .video-block {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+      align-items: stretch;
+      margin-top: 26px;
+    }
+
+    .mock-video {
+      min-height: 540px;
+      position: relative;
+      border-radius: 38px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #211414, #8d1115 58%, #c5ce6f);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      color: var(--cream);
+    }
+
+    .mock-video.cool {
+      background: linear-gradient(160deg, #1a2026, #a61517 45%, #f1c15c 100%);
+    }
+
+    .mock-video::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.26), transparent 24%),
+        linear-gradient(110deg, rgba(255, 255, 255, 0.12), transparent 46%);
+    }
+
+    .mock-video-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .format {
+      display: inline-flex;
+      align-self: flex-start;
+      border: 1px solid rgba(255, 248, 233, 0.28);
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .video-title {
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 950;
+      letter-spacing: -0.08em;
+      line-height: 0.92;
+    }
+
+    .phone-placeholder {
+      width: 82%;
+      max-width: 265px;
+      aspect-ratio: 9 / 16;
+      border-radius: 32px;
+      border: 10px solid rgba(20, 14, 14, 0.9);
+      margin: 26px auto;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 234, 211, 0.96));
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+      display: grid;
+      place-items: center;
+      color: var(--red);
+      text-align: center;
+      padding: 20px;
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(36, 21, 21, 0.08);
+    }
+
+    .time {
+      font-weight: 950;
+      color: var(--red);
+    }
+
+    .step p {
+      color: #4d3d37;
+    }
+
+    .split-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #3f4418;
+      font-weight: 950;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .table {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(36, 21, 21, 0.08);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 16px 40px rgba(36, 21, 21, 0.08);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1.15fr 1.1fr;
+    }
+
+    .row > div {
+      padding: 18px;
+      border-bottom: 1px solid rgba(36, 21, 21, 0.08);
+      border-right: 1px solid rgba(36, 21, 21, 0.08);
+    }
+
+    .row > div:last-child {
+      border-right: 0;
+    }
+
+    .row:last-child > div {
+      border-bottom: 0;
+    }
+
+    .head > div {
+      background: var(--red);
+      color: var(--cream);
+      font-weight: 950;
+    }
+
+    .row:not(.head) > div:first-child {
+      font-weight: 950;
+      color: var(--red-dark);
+    }
+
+    .production-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .tool-card {
+      min-height: 150px;
+      border-radius: 22px;
+      padding: 20px;
+      background: var(--red-dark);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      right: -50px;
+      bottom: -60px;
+      background: rgba(197, 206, 111, 0.45);
+    }
+
+    .tool-card span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .tool-card p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 248, 233, 0.76);
+      font-size: 14px;
+    }
+
+    .quote {
+      padding: 46px;
+      border-radius: var(--radius-xl);
+      background: var(--red);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 90% 20%, rgba(197, 206, 111, 0.48), transparent 28%),
+        radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.16), transparent 25%);
+    }
+
+    .quote > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote p {
+      font-size: clamp(26px, 4vw, 52px);
+      line-height: 1.04;
+      letter-spacing: -0.06em;
+      font-weight: 950;
+      max-width: 960px;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 20px;
+      color: rgba(255, 248, 233, 0.76);
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 34px 0 70px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 14px 30px rgba(159, 23, 25, 0.18);
+      overflow: hidden;
+      border: 1px solid rgba(159, 23, 25, 0.12);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 6px;
+    }
+
+    .video-holder {
+      padding: 0;
+      overflow: hidden;
+      background: #151010;
+      display: block;
+      position: relative;
+      color: var(--cream);
+    }
+
+    .video-holder video {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #151010;
+    }
+
+    .asset-hint {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(20, 14, 14, 0.78);
+      backdrop-filter: blur(10px);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.25;
+      pointer-events: none;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .asset-card {
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(36, 21, 21, 0.08);
+      padding: 22px;
+      box-shadow: 0 14px 34px rgba(36, 21, 21, 0.08);
+    }
+
+    .asset-card code {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 9px;
+      border-radius: 10px;
+      background: rgba(159, 23, 25, 0.08);
+      color: var(--red);
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .video-block,
+      .asset-grid,
+      .grid-2,
+      .grid-3,
+      .production-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .phone {
+        height: 560px;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .row > div {
+        border-right: 0;
+      }
+
+      .head {
+        display: none;
+      }
+
+      .row:not(.head) > div::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--muted);
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+      }
+    }
+
+    @media print {
+      .topbar {
+        position: static;
+      }
+
+      section {
+        page-break-inside: avoid;
+        padding: 42px 0;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Retour au début">
+        <span class="brand-logo"><img src="assets/logo.png" alt="Logo FEATZY" /></span>
+        <span>FEATZY</span>
+      </a>
+      <div class="links" aria-label="Navigation principale">
+        <a href="#strategie">Stratégie</a>
+        <a href="#video-1">Vidéo 1</a>
+        <a href="#video-2">Vidéo 2</a>
+        <a href="#production">Production</a>
+        <a href="#integration">Intégration</a>
+        <a href="#bilan">Bilan</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Présentation contenus vidéo</span>
+          <h1>Créer des vidéos qui expliquent Featzy sans faire une pub classique.</h1>
+          <p class="lead">Cette présentation met en avant deux contenus vidéo pensés pour Instagram, avec une lecture à la fois stratégique et production : pourquoi ces formats existent, ce qu’ils racontent, comment ils sont construits et ce qu’ils prouvent sur le projet.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#strategie">Voir la logique stratégique</a>
+            <a class="button secondary" href="#production">Voir la partie production</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Aperçu mobile FEATZY">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="app-title">Featzy</div>
+              <div class="mini-card">
+                <div class="mini-label">Réservation</div>
+                <strong>Table pour 4 ce soir</strong>
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+              </div>
+              <div class="mini-card red">
+                <div class="mini-label">Promesse</div>
+                <strong>Commandez avant. Profitez sur place.</strong>
+              </div>
+              <div class="mini-card">
+                <div class="mini-label">Contenu vidéo</div>
+                <strong>Storytelling court, rythme social media, bénéfice clair.</strong>
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="strategie">
+      <div class="wrap">
+        <span class="eyebrow">Angle stratégique</span>
+        <h2>La vidéo sert à rendre la promesse produit immédiatement compréhensible.</h2>
+        <p class="section-kicker">Featzy répond à une tension simple : on veut sortir, manger ensemble et gagner du temps, mais l’organisation, l’attente et le paiement peuvent gâcher l’expérience. Les contenus vidéo traduisent cette friction en scènes du quotidien, puis montrent l’application comme une solution fluide.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="number">1</div>
+            <h3>Faire ressentir le problème</h3>
+            <p>Avant de vendre une fonctionnalité, les vidéos installent une situation reconnaissable : amis indisponibles, service sous pression, attente, tickets, commandes et fatigue. Le spectateur comprend le besoin sans explication longue.</p>
+          </article>
+          <article class="card">
+            <div class="number">2</div>
+            <h3>Transformer Featzy en déclic</h3>
+            <p>L’application arrive comme un point de bascule. Le récit passe du stress à la maîtrise : réservation, précommande, paiement et arrivée au restaurant deviennent des gestes simples.</p>
+          </article>
+          <article class="card">
+            <div class="number">3</div>
+            <h3>Créer de la mémorisation</h3>
+            <p>Les formats s’appuient sur des codes social media : hook court, montage rythmé, textes incrustés, rupture sonore, style “Bref”, contraste avant/après et logo final pour ancrer la marque.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="video-1">
+      <div class="wrap">
+        <div class="split-title">
+          <div>
+            <span class="eyebrow">Vidéo 1</span>
+            <h2>La simplicité d’un moment partagé.</h2>
+            <p class="section-kicker">Un contenu orienté B2C qui met en scène une envie de sortir freinée par le manque de temps et l’attente au restaurant. Featzy devient la solution qui permet de reconnecter un groupe autour d’un repas sans friction.</p>
+          </div>
+          <span class="tag">B2C</span>
+        </div>
+
+        <div class="video-block">
+          <div class="mock-video">
+            <div class="mock-video-content">
+              <span class="format">Format Instagram vertical</span>
+              <div>
+                <div class="video-title">Envie de sortir. Zéro attente.</div>
+                <div class="phone-placeholder video-holder">
+                  <video controls playsinline preload="metadata" poster="assets/poster_video_1.svg" aria-label="Vidéo 1 FEATZY">
+                    <source src="assets/video_1.mp4" type="video/mp4" />
+                    Ton navigateur ne peut pas lire cette vidéo.
+                  </video>
+                  <div class="asset-hint">Remplacer par : assets/video_1.mp4</div>
+                </div>
+              </div>
+              <p>Hook proposé : “Bref, j’avais envie de sortir.”</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <article class="step">
+              <div class="time">Acte 1</div>
+              <p><strong>Le quotidien.</strong> Début lent, tons froids, réveil, frigo, canapé. L’ambiance installe une routine un peu molle et une envie de bouger.</p>
+            </article>
+            <article class="step">
+              <div class="time">Acte 2</div>
+              <p><strong>Le frein.</strong> Les messages des amis apparaissent à l’écran. Tout le monde est occupé ou découragé par l’attente au restaurant. Le problème devient concret et visuel.</p>
+            </article>
+            <article class="step">
+              <div class="time">Acte 3</div>
+              <p><strong>Le déclic Featzy.</strong> L’actrice reprend son téléphone, crée son compte, choisit sa table, son plat et envoie le lien aux amis. La promesse est montrée par l’action.</p>
+            </article>
+            <article class="step">
+              <div class="time">Final</div>
+              <p><strong>La preuve.</strong> Les amis arrivent, s’assoient et les plats arrivent presque immédiatement. Le plan circulaire autour de la table valorise le plaisir, la convivialité et le gain de temps.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video-2">
+      <div class="wrap">
+        <div class="split-title">
+          <div>
+            <span class="eyebrow">Vidéo 2</span>
+            <h2>Bref, Featzy remet de l’ordre dans le service.</h2>
+            <p class="section-kicker">Un contenu plus opérationnel qui utilise le contraste “chaos puis maîtrise” pour montrer la valeur de Featzy côté service : commandes anticipées, paiement déjà effectué et expérience plus fluide pour l’équipe comme pour le client.</p>
+          </div>
+          <span class="tag">B2B et terrain</span>
+        </div>
+
+        <div class="video-block">
+          <div class="mock-video cool">
+            <div class="mock-video-content">
+              <span class="format">Format court rythmé</span>
+              <div>
+                <div class="video-title">Tac. Commandé. Payé. Servi.</div>
+                <div class="phone-placeholder video-holder">
+                  <video controls playsinline preload="metadata" poster="assets/poster_video_2.svg" aria-label="Vidéo 2 FEATZY">
+                    <source src="assets/video_2.mp4" type="video/mp4" />
+                    Ton navigateur ne peut pas lire cette vidéo.
+                  </video>
+                  <div class="asset-hint">Remplacer par : assets/video_2.mp4</div>
+                </div>
+              </div>
+              <p>Slogan final : “Featzy : Commandez. Arrivez. Savourez.”</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <article class="step">
+              <div class="time">Chaos</div>
+              <p><strong>Stress du service.</strong> Gros plans rapides sur le serveur, la caisse, les tickets, la foule, le téléphone. Le montage court crée une sensation de saturation.</p>
+            </article>
+            <article class="step">
+              <div class="time">Break</div>
+              <p><strong>Rupture de rythme.</strong> Fond noir, logo Featzy, son sec. Cette pause marque le passage du problème à la solution.</p>
+            </article>
+            <article class="step">
+              <div class="time">Maîtrise</div>
+              <p><strong>Service simplifié.</strong> Le serveur est calme, il valide la commande sur le téléphone, le client arrive et reçoit son plateau sans attente. Le bénéfice est immédiat.</p>
+            </article>
+            <article class="step">
+              <div class="time">Plaisir</div>
+              <p><strong>Conclusion produit.</strong> Gros plan sur le plat, effet sonore net, phrase de remerciement et logo final. La vidéo finit sur la satisfaction plutôt que sur la fonctionnalité brute.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="production">
+      <div class="wrap">
+        <span class="eyebrow">Angle production</span>
+        <h2>Une production pensée pour les codes des réseaux sociaux.</h2>
+        <p class="section-kicker">Les vidéos montrent une vraie logique de production : écriture du concept, découpage des séquences, choix du rythme, direction sonore, incrustations de texte, tournage en plans courts et montage pensé pour retenir l’attention dès les premières secondes.</p>
+
+        <div class="table" role="table" aria-label="Analyse stratégique et production des vidéos">
+          <div class="row head" role="row">
+            <div role="columnheader">Contenu</div>
+            <div role="columnheader">Intention stratégique</div>
+            <div role="columnheader">Choix de réalisation</div>
+            <div role="columnheader">Compétence valorisée</div>
+          </div>
+          <div class="row" role="row">
+            <div data-label="Contenu" role="cell">Vidéo 1</div>
+            <div data-label="Intention stratégique" role="cell">Créer de l’identification côté utilisateur et montrer que Featzy facilite les repas entre amis.</div>
+            <div data-label="Choix de réalisation" role="cell">Tons froids puis chauds, SMS animés, montage de déclic, match cut à table et plan circulaire final.</div>
+            <div data-label="Compétence valorisée" role="cell">Storytelling, écriture publicitaire, direction d’acteur, rythme émotionnel, montage social media.</div>
+          </div>
+          <div class="row" role="row">
+            <div data-label="Contenu" role="cell">Vidéo 2</div>
+            <div data-label="Intention stratégique" role="cell">Prouver la valeur opérationnelle : moins de pression, commandes préparées, paiement simplifié et service plus fluide.</div>
+            <div data-label="Choix de réalisation" role="cell">Cuts secs, sons saturés au début, rupture avec logo, musique plus calme, textes “Tac” synchronisés.</div>
+            <div data-label="Compétence valorisée" role="cell">Montage dynamique, sound design, contraste avant/après, sous-titrage, logique de preuve produit.</div>
+          </div>
+        </div>
+
+        <div class="production-strip" aria-label="Outils et étapes de production">
+          <div class="tool-card">
+            <span>Pré-prod</span>
+            <p>Concept, cible, hook, script court, découpage des séquences et préparation des accessoires.</p>
+          </div>
+          <div class="tool-card">
+            <span>Tournage</span>
+            <p>Plans serrés, téléphone en situation, mouvements rapides, scènes de restaurant et jeu d’acteur.</p>
+          </div>
+          <div class="tool-card">
+            <span>Post-prod</span>
+            <p>Montage, transitions, textes animés, rythme, musique, bruitages et logo final.</p>
+          </div>
+          <div class="tool-card">
+            <span>Outils</span>
+            <p>Envato, After Effects, Premiere Pro et CapCut Pro pour produire un rendu adapté aux plateformes sociales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="integration">
+      <div class="wrap">
+        <span class="eyebrow">Intégration Vercel</span>
+        <h2>Une structure simple pour héberger la présentation et remplacer les médias.</h2>
+        <p class="section-kicker">Le site est prêt pour un déploiement statique : le fichier <strong>index.html</strong> est à la racine, et les médias sont centralisés dans le dossier <strong>assets</strong>. Pour intégrer tes contenus, il suffit de remplacer les fichiers par les bons noms.</p>
+
+        <div class="asset-grid">
+          <article class="asset-card">
+            <h3>Logo</h3>
+            <p>Remplace l’image placeholder par ton logo final. Il s’affichera automatiquement dans la barre de navigation.</p>
+            <code>assets/logo.png</code>
+          </article>
+          <article class="asset-card">
+            <h3>Vidéo 1</h3>
+            <p>Ajoute la première vidéo exportée en format vertical MP4, avec ce nom exact pour que le lecteur la récupère.</p>
+            <code>assets/video_1.mp4</code>
+          </article>
+          <article class="asset-card">
+            <h3>Vidéo 2</h3>
+            <p>Ajoute la seconde vidéo exportée en format vertical MP4, avec ce nom exact pour que le lecteur la récupère.</p>
+            <code>assets/video_2.mp4</code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="bilan">
+      <div class="wrap">
+        <div class="quote">
+          <p>Ces contenus ne vendent pas seulement une application : ils mettent en scène un avant et un après, pour rendre la promesse de Featzy simple, visible et mémorisable.</p>
+          <small>Périmètre de présentation : vidéos 1 et 2 uniquement.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Présentation HTML et CSS — Contenus vidéo FEATZY</div>
+  </footer>
+</body>
+</html>
