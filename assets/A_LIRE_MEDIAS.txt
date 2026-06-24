@@ -1,0 +1,8 @@
+Remplace les fichiers suivants :
+
+logo.png -> ton logo final
+video_1.mp4 -> ta première vidéo
+video_2.mp4 -> ta deuxième vidéo
+
+Garde exactement ces noms pour ne rien modifier dans le code HTML.
+Format conseillé pour les vidéos : MP4 vertical, compressé pour le web.
